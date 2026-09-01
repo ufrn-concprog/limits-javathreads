@@ -5,7 +5,7 @@
  */
 public class MainPlatformThreads {
     private static final int STEP = 500;
-    private static final int ALIVE_TIME = 60000;
+    private static final int ALIVE_TIME = 30000;
 
     public static void main(String[] args) {
         Runnable task = () -> {
@@ -16,6 +16,7 @@ public class MainPlatformThreads {
             }
         };
 
-        new LimitBenchmarkRunner("Platform Threads", BenchmarkLimits::benchmarkPlatformThreads, task, STEP).run();
+        new LimitBenchmarkRunner("Platform Threads",
+                BenchmarkLimits::benchmarkPlatformThreads, task, STEP).run();
     }
 }

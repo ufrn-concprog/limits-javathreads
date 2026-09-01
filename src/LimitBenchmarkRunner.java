@@ -49,7 +49,7 @@ public class LimitBenchmarkRunner {
                 lastSuccessful.set(maxThreads);
 
                 double elapsedSoFar = (System.nanoTime() - experimentStart) / 1e9;
-                System.out.printf("  (elapsed: %.1f s)%n", elapsedSoFar);
+                System.out.printf(" (elapsed: %.3f s)%n", elapsedSoFar);
 
                 maxThreads += step;
             } catch (InterruptedException e) {
@@ -60,8 +60,8 @@ public class LimitBenchmarkRunner {
                 break;
             }
         }
-        // Reaching here ends run(); the shutdown hook fires on normal exit here,
-        // and equally fires if the process is instead stopped manually.
+
+        System.out.println("Execution terminated.");
     }
 
     /**

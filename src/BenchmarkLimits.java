@@ -41,7 +41,7 @@ public class BenchmarkLimits {
             t.join();
         }
 
-        System.out.printf("%s: successfully created %d platform threads%n", label, numWorkers);
+        System.out.printf("%s: successfully created %d platform threads", label, numWorkers);
     }
 
     /**
