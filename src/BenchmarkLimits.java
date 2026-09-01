@@ -72,6 +72,6 @@ public class BenchmarkLimits {
             t.join();
         }
 
-        System.out.printf("%s: successfully created %d virtual threads%n", label, numWorkers);
+        System.out.printf("%s: successfully created %d virtual threads", label, numWorkers);
     }
 }
