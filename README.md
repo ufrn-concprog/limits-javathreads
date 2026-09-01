@@ -69,21 +69,20 @@ Each batch prints its result and the elapsed time so far, until creation fails a
 Benchmarking the limits to create platform threads:
 Started at 27/08/2026 14:02:10
 
-Platform Threads: successfully created 500 platform threads (elapsed: 30.0 s)
-Platform Threads: successfully created 1000 platform threads (elapsed: 60.1 s)
-Platform Threads: successfully created 1500 platform threads (elapsed: 90.1 s)
-Platform Threads: successfully created 2000 platform threads (elapsed: 120.2 s)
-Platform Threads: successfully created 2500 platform threads (elapsed: 150.3 s)
-Platform Threads: successfully created 3000 platform threads (elapsed: 180.5 s)
-Platform Threads: successfully created 3500 platform threads (elapsed: 210.7 s)
-Platform Threads: successfully created 4000 platform threads (elapsed: 240.9 s)
-[241.2s][warning][os,thread] Failed to start thread "Unknown thread" - pthread_create failed (EAGAIN) for attributes: stacksize: 2048k, guardsize: 16k, detached.
-[241.2s][warning][os,thread] Failed to start the native thread for java.lang.Thread "Thread-22065"
-
-Platform threads benchmark failed for more than 4000 units after running for 241.226 s
+Platform Threads: successfully created 500 platform threads (elapsed: 60.040 s)
+Platform Threads: successfully created 1000 platform threads (elapsed: 120.082 s)
+Platform Threads: successfully created 1500 platform threads (elapsed: 180.144 s)
+Platform Threads: successfully created 2000 platform threads (elapsed: 240.232 s)
+Platform Threads: successfully created 2500 platform threads (elapsed: 300.347 s)
+Platform Threads: successfully created 3000 platform threads (elapsed: 360.494 s)
+Platform Threads: successfully created 3500 platform threads (elapsed: 420.697 s)
+Platform Threads: successfully created 4000 platform threads (elapsed: 480.943 s)
+[481.216s][warning][os,thread] Failed to start thread "Unknown thread" - pthread_create failed (EAGAIN) for attributes: stacksize: 2048k, guardsize: 16k, detached.
+[481.216s][warning][os,thread] Failed to start the native thread for java.lang.Thread "Thread-22065"
+Execution terminated.
 ```
 
-**Note:** the `[os,thread]` warnings come from the JVM itself (not from the program's own output) and may print in a different order relative to the summary line since they go to a different output stream. This behavior is normal and not a benchmark bug.
+**Note:** the `[os,thread]` warnings come from the JVM itself, not from the program's own output.
 
 ### Expected Output — Virtual Threads
 
