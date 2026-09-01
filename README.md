@@ -4,18 +4,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Build](https://img.shields.io/badge/build-manual-lightgrey)
 
-This benchmark explores how many platform and virtual threads can be created and kept alive simultaneously in Java, subject to the available computing resources. The goal is to demonstrate, empirically, the scalability difference between OS-backed (platform) threads and JVM-managed virtual threads.
+This benchmark explores how many platform and virtual threads Java can create and keep alive simultaneously, subject to available computing resources. The goal is to empirically demonstrate the scalability difference between OS-backed (platform) threads and JVM-managed virtual threads.
 
 This project is part of the **Concurrent Programming** module at the [Federal University of Rio Grande do Norte (UFRN)](https://www.ufrn.br), Natal, Brazil.
 
 ## 📃 Description
 
-The benchmark repeatedly attempts to create an increasing number of threads in batches, in steps of 500 (i.e., 500, 1,000, 1,500, and so on). Each thread in a batch is kept alive by sleeping, so that the whole batch is genuinely alive at once before the next, larger batch is attempted.
+The benchmark repeatedly attempts to create an increasing number of threads in batches of 500 (i.e., 500, 1,000, 1,500, and so on). Each thread in a batch stays alive by sleeping, so the whole batch is genuinely alive at once before the next, larger batch is attempted.
 
 - **Platform threads** are expected to eventually fail, typically with a [`java.lang.OutOfMemoryError`](https://docs.oracle.com/en/java/javase/26/docs/api/java.base/java/lang/OutOfMemoryError.html) or a failure to start a native OS thread once the operating system can no longer allocate resources for one more thread.
 - **Virtual threads** are expected to scale far beyond what platform threads can sustain, and this benchmark is not expected to fail on its own. It is intended to be stopped manually (e.g., with Ctrl+C) after some time.
 
-Either way the run ends (failure or manual interruption), a summary is printed reporting the largest batch successfully created and the total elapsed time.
+Either way the run ends (failure or manual interruption), it prints a summary reporting the largest batch successfully created and the total elapsed time.
 
 ## 📂 Repository Structure
 
@@ -59,7 +59,7 @@ Run the virtual threads benchmark:
 java -cp out limits.MainVirtualThreads
 ```
 
-⚠️ **Resource warning:** both benchmarks deliberately push thread creation to the point of failure (platform threads) or run for an extended, open-ended period (virtual threads). Run this on a machine that stressing is not minded (not a shared or production system) and expect noticeably high memory and CPU usage while it runs.
+⚠️ **Resource warning:** both benchmarks deliberately push thread creation to the point of failure (platform threads) or run for an extended, open-ended period (virtual threads). Run this on a machine that is not stressed (not a shared or production system) and expect noticeably high memory and CPU usage while it runs.
 
 ### Expected Output — Platform Threads
 
@@ -83,7 +83,7 @@ Platform Threads: successfully created 4000 platform threads (elapsed: 240.9 s)
 Platform threads benchmark failed for more than 4000 units after running for 241.226 s
 ```
 
-**Note:** the `[os,thread]` warnings come from the JVM itself (not from the program's own output) and may print in a different order relative to the summary line since they go to a different output stream. This behavior is normal and not a bug in the benchmark.
+**Note:** the `[os,thread]` warnings come from the JVM itself (not from the program's own output) and may print in a different order relative to the summary line since they go to a different output stream. This behavior is normal and not a benchmark bug.
 
 ### Expected Output — Virtual Threads
 
@@ -102,7 +102,7 @@ Virtual Threads: successfully created 190000 virtual threads (elapsed: 22801.4 s
 Virtual threads benchmark ran for 22801.482 s, created 190000 units, and did not stop
 ```
 
-How long te benchmark takes depends on how long each thread is kept alive (`ALIVE_TIME` in each `Main` class) and the batch step size (`STEP`). Both are configurable constants (see the Javadoc on `LimitBenchmarkRunner` and each `Main` class for details).
+Benchmark duration depends on how long each thread stays alive (`ALIVE_TIME` in each `Main` class) and the batch step size (`STEP`). Both are configurable constants (see the Javadoc on `LimitBenchmarkRunner` and each `Main` class for details).
 
 ## 🤝 Contributing
 
