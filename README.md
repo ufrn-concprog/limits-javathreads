@@ -92,13 +92,13 @@ This run is expected to continue well beyond the point where the platform thread
 Benchmarking the limits to create virtual threads:
 Started at 27/08/2026 14:10:03
 
-Virtual Threads: successfully created 500 virtual threads (elapsed: 30.0 s)
-Virtual Threads: successfully created 1000 virtual threads (elapsed: 60.1 s)
-Virtual Threads: successfully created 1500 virtual threads (elapsed: 90.1 s)
+Virtual Threads: successfully created 500 virtual threads (elapsed: 60.052 s)
+Virtual Threads: successfully created 1000 virtual threads (elapsed: 120.071 s)
+Virtual Threads: successfully created 1500 virtual threads (elapsed: 180.085 s)
 ...
-Virtual Threads: successfully created 190000 virtual threads (elapsed: 22801.4 s)
+Virtual Threads: successfully created 45000 virtual threads (elapsed: 5403.532 s)
 ^C
-Virtual threads benchmark ran for 22801.482 s, created 190000 units, and did not stop
+Virtual Threads benchmark ran for 5403.532 s, created 45000 units, and did not stop
 ```
 
 Benchmark duration depends on how long each thread stays alive (`ALIVE_TIME` in each `Main` class) and the batch step size (`STEP`). Both are configurable constants (see the Javadoc on `LimitBenchmarkRunner` and each `Main` class for details).
